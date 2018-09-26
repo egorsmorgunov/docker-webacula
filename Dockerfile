@@ -6,12 +6,12 @@ MAINTAINER Dmitrii Zolotov <dzolotov@herzen.spb.ru>
 ENV DEBIAN_FRONTEND noninteractive
 
 ADD sources.list /etc/apt/
+ADD web /usr/share/webacula
 RUN apt-get update && \
     apt-get dist-upgrade -y && \
     apt-get install --force-yes -y lsof liberror-perl perl nginx php-common php-fpm php-gd php-pgsql git python-setuptools zendframework sudo postgresql-client mc libwrap0 bacula-console netcat && \
     mkdir -p /opt/bacula/bin && ln -s /usr/bin/bconsole /opt/bacula/bin/bconsole && mkdir /opt/bacula/lib && ln -s /usr/lib/libbac* /opt/bacula/lib/ && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
-    mkdir /usr/share/webacula && cd /usr/share/webacula && git clone https://github.com/tim4dev/webacula . && \
     rm /usr/share/webacula/install/PostgreSql/* && rm /usr/share/webacula/application/config.ini && rm /usr/share/webacula/install/db.conf && \
     chown www-data:www-data -R /usr/share/webacula && chmod 777 -R /usr/share/webacula/data && \
     rm -rf /etc/nginx/sites-available/* && rm -rf /etc/nginx/sites-enabled/*

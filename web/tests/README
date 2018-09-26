@@ -1,0 +1,35 @@
+
+
+Tests not worked under Zend Framework > 1.12.3
+Declaration of Zend_Test_PHPUnit_Constraint_DomQuery::fail() should be compatible with PHPUnit_Framework_Constraint::fail($other, $description, $not = false)
+
+
+---------------------------------------------------------------
+
+Zend Framework 1 only function properly using PHPUnit 3.5.x.
+Downgrade phpunit 3.6 to 3.5.15
+Zend Framework 2 will support the current version of PHPUnit.
+
+pear config-set http_proxy http://username:password@yourproxy:80
+
+phpunit --version
+PHPUnit 3.5.15
+
+yum erase php-phpunit-\*
+
+pear channel-discover pear.symfony-project.com
+pear channel-discover pear.phpunit.de
+pear channel-update pear.phpunit.de
+
+pear install --alldeps pear.symfony-project.com/YAML-1.0.2
+pear install --alldeps phpunit/PHPUnit_Selenium-1.0.1
+pear install --alldeps phpunit/Text_Template-1.0.0
+pear install --alldeps phpunit/PHPUnit_MockObject-1.0.3
+pear install --alldeps phpunit/PHP_Timer-1.0.0
+pear install --alldeps phpunit/File_Iterator-1.2.3
+pear install --alldeps phpunit/PHP_TokenStream-1.0.1
+pear install --alldeps phpunit/PHP_CodeCoverage-1.0.2
+pear install --alldeps phpunit/DbUnit-1.0.0
+pear install --alldeps phpunit/PHPUnit-3.5.15
+
+
