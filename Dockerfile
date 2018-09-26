@@ -5,7 +5,8 @@ MAINTAINER Dmitrii Zolotov <dzolotov@herzen.spb.ru>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ADD sources.list /etc/apt/
+RUN echo 'deb http://mirror.mephi.ru/debian/ sid main contrib' >> /etc/apt/sources.list
+RUN echo 'deb-src http://mirror.mephi.ru/debian/ sid main contrib' >> /etc/apt/sources.list
 ADD web /usr/share/webacula
 RUN apt-get update && \
     apt-get dist-upgrade -y && \
